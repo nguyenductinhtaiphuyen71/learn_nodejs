@@ -5,13 +5,15 @@ const hbs = require("express-handlebars");
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'resources/public')));
+
 app.engine("hbs", hbs.engine({
     extname : ".hbs",
 }));
 app.use(morgan("combined"));
 
 app.set("view engine", "hbs");
-app.set('views', path.join(__dirname, "sources/views"));
+app.set('views', path.join(__dirname, "resources/views"));
 
 const port = 3060;
 
